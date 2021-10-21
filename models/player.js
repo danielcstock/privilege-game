@@ -1,5 +1,3 @@
-
-
 class Player {
     createPlayer(pPlayer) {
         console.log("Player created.")
