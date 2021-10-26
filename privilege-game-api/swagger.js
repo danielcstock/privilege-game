@@ -41,8 +41,8 @@ const doc = {
     },
     definitions: {
         player: {
-            email: "jhon.doe@email.com",
-            occupation: 'analyst',
+            $email: "jhon.doe@email.com",
+            $occupation: 'analyst',
             $skin_tone: 5,
             $gender: 3
         },
@@ -51,6 +51,23 @@ const doc = {
             $occupation: 'analyst',
             $skin_tone: 5,
             $gender: 3
+        },
+        race: {
+            $id: 100,
+            $name: "privilege game",
+            description: "privilege game description",
+            $total_players: 100,
+            $has_prize: true,
+            prize: "A cash prize of U$100.000,00",
+            $lane_size: 100
+        },
+        addRace: {
+            $name: "privilege game",
+            description: "privilege game description",
+            $total_players: 100,
+            $has_prize: true,
+            prize: "A cash prize of U$100.000,00",
+            $lane_size: 100
         }
     }
 }
