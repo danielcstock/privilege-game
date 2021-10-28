@@ -1,5 +1,4 @@
 const Race = require("../models/race");
-const Player = require("../models/player");
 
 module.exports = app => {
     // Get

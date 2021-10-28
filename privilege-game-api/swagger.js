@@ -4,6 +4,9 @@ const endpointsFiles =
     [
         './controllers/player.js',
         './controllers/race.js',
+        './controllers/level.js',
+        './controllers/question.js',
+        './controllers/score.js',
     ]
 
 const doc = {
@@ -68,6 +71,41 @@ const doc = {
             $has_prize: true,
             prize: "A cash prize of U$100.000,00",
             $lane_size: 100
+        },
+        level: {
+            $id: 3,
+            $boundary: 25,
+            $name: 'Intern',
+            $race_id: 1
+        },
+        addLevel: {
+            $boundary: 25,
+            $name: 'Intern',
+            $race_id: 1
+        },
+        question: {
+            $id: 15,
+            $content: 'Are your both parents graduated?',
+            $score: 5,
+            $type: 1,
+            $race_id: 1
+        },
+        addQuestion: {
+            $content: 'Are your both parents graduated?',
+            $score: 5,
+            $type: 1,
+            $race_id: 1
+        },
+        score: {
+            $id: 20,
+            $points: 40,
+            $player_id: 1,
+            $race_id: 1
+        },
+        addScore: {
+            $points: 40,
+            $player_id: 1,
+            $race_id: 1
         }
     }
 }
