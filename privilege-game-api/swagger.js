@@ -58,7 +58,7 @@ const doc = {
             $gender: 3
         },
         race: {
-            $id: 100,
+            $id: "6183f7afbf78b91c1a0e2f9e",
             $name: "privilege game",
             description: "privilege game description",
             $total_players: 100,

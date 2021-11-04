@@ -23,6 +23,7 @@ async function insertOne(pCollection, pDocument){
         const collection = database.collection(pCollection);
         const result = await collection.insertOne(pDocument);
         console.log(`A document was inserted with the _id: ${result.insertedId}`);
+        return result.insertedId;
     } finally {
         await client.close();
     }

@@ -58,6 +58,24 @@
         "responses": {}
       }
     },
+    "/player/email/{email}": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Gets an existing player.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Player's email address."
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/player": {
       "post": {
         "tags": [
@@ -70,7 +88,7 @@
             "in": "body",
             "description": "Player's info.",
             "required": true,
-            "type": "object",
+            "type": "Player",
             "schema": {
               "$ref": "#/definitions/addPlayer"
             }
