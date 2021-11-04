@@ -1,8 +1,9 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
-import React, { createContext, useContext } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import React, { createContext } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAxios } from "use-axios-client";
+import Player from "./player/player.container";
 import theme from "./theme";
 
 const { REACT_APP_BASE_API_URL } = process.env;
@@ -22,16 +23,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <Context.Provider value="teste">
           <Router>
-            <nav>
-              <Link to="/">Home</Link>
-              <Link to="/avatar">Avatar</Link>
-            </nav>
             <Switch>
               <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/avatar">
-                <Avatar />
+                <Player />
               </Route>
             </Switch>
           </Router>
@@ -39,21 +33,6 @@ function App() {
       </ThemeProvider>
     </>
   );
-}
-
-function Home() {
-  const value = useContext(Context);
-  return (
-    <>
-      <h1>{value}</h1>
-    </>
-  );
-}
-
-function Avatar() {
-  const value = useContext(Context);
-
-  return <>{value}</>;
 }
 
 export default App;
