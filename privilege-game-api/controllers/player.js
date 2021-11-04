@@ -1,6 +1,5 @@
 const Player = require('../models/player')
 const {ObjectId} = require("mongodb");
-{ObjectId}
 
 // Exportar a função da controller
 module.exports = app => {
@@ -34,10 +33,10 @@ module.exports = app => {
     // Put
     app.put('/player/:id', async (req, res) => {
         // #swagger.tags = ['Player']
-        // #swagger.description = 'Updates an existing player.'
-        /* #swagger.parameters['Player'] = {
+        // #swagger.description = 'Updates an existing player by id.'
+        /* #swagger.parameters['score'] = {
                in: 'body',
-               description: 'Player\'s info.',
+               description: 'Player\'s score.',
                required: true,
                type: 'Player',
                schema: { $ref: "#/definitions/updateScore" }
@@ -47,5 +46,14 @@ module.exports = app => {
         const p = await Player.updatePlayer(id, document);
 
         res.send(p);
-    })
+    });
+
+    // Delete
+    app.delete('/player/:id', async (req, res) => {
+        // #swagger.tags = ['Player']
+        // #swagger.description = 'Deletes an existing player by id.'
+        const id = req.params.id;
+        const p = await Player.deletePlayer(id);
+        res.send(p);
+    });
 }

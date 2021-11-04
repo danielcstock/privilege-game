@@ -61,7 +61,7 @@
         "tags": [
           "Player"
         ],
-        "description": "Updates an existing player.",
+        "description": "Updates an existing player by id.",
         "parameters": [
           {
             "name": "id",
@@ -70,14 +70,29 @@
             "type": "string"
           },
           {
-            "name": "Player",
+            "name": "score",
             "in": "body",
-            "description": "Player's info.",
+            "description": "Player's score.",
             "required": true,
             "type": "Player",
             "schema": {
               "$ref": "#/definitions/updateScore"
             }
+          }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Deletes an existing player by id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {}

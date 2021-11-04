@@ -32,6 +32,12 @@ class Player {
         await db.updateOne("players", filter, pPlayer);
         return {pPlayer};
     }
+
+    async deletePlayer(pId){
+        const filter = { _id: ObjectId(pId) };
+        const result = await db.deleteOne("players", filter);
+        return {result};
+    }
 }
 
 module.exports = new Player();
