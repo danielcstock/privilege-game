@@ -4,6 +4,9 @@ const endpointsFiles =
     [
         './controllers/player.js',
         './controllers/race.js',
+        './controllers/level.js',
+        './controllers/question.js',
+        './controllers/score.js',
     ]
 
 const doc = {
@@ -41,16 +44,70 @@ const doc = {
     },
     definitions: {
         player: {
-            email: "jhon.doe@email.com",
-            occupation: 'analyst',
+            $email: "jhon.doe@email.com",
+            $occupation: 'analyst',
+            $manager: false,
             $skin_tone: 5,
             $gender: 3
         },
         addPlayer: {
             $email: 'jhon.doe@email.com',
             $occupation: 'analyst',
+            $manager: false,
             $skin_tone: 5,
             $gender: 3
+        },
+        race: {
+            $id: "6183f7afbf78b91c1a0e2f9e",
+            $name: "privilege game",
+            description: "privilege game description",
+            $total_players: 100,
+            $has_prize: true,
+            prize: "A cash prize of U$100.000,00",
+            $lane_size: 100
+        },
+        addRace: {
+            $name: "privilege game",
+            description: "privilege game description",
+            $total_players: 100,
+            $has_prize: true,
+            prize: "A cash prize of U$100.000,00",
+            $lane_size: 100
+        },
+        level: {
+            $id: 3,
+            $boundary: 25,
+            $name: 'Intern',
+            $race_id: 1
+        },
+        addLevel: {
+            $boundary: 25,
+            $name: 'Intern',
+            $race_id: 1
+        },
+        question: {
+            $id: 15,
+            $content: 'Are your both parents graduated?',
+            $score: 5,
+            $type: 1,
+            $race_id: 1
+        },
+        addQuestion: {
+            $content: 'Are your both parents graduated?',
+            $score: 5,
+            $type: 1,
+            $race_id: 1
+        },
+        score: {
+            $id: 20,
+            $points: 40,
+            $player_id: 1,
+            $race_id: 1
+        },
+        addScore: {
+            $points: 40,
+            $player_id: 1,
+            $race_id: 1
         }
     }
 }

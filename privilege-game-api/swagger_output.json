@@ -58,6 +58,24 @@
         "responses": {}
       }
     },
+    "/player/email/{email}": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Gets an existing player.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Player's email address."
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/player": {
       "post": {
         "tags": [
@@ -70,7 +88,7 @@
             "in": "body",
             "description": "Player's info.",
             "required": true,
-            "type": "object",
+            "type": "Player",
             "schema": {
               "$ref": "#/definitions/addPlayer"
             }
@@ -79,20 +97,162 @@
         "responses": {}
       }
     },
-    "/race": {
+    "/race/{id}": {
       "get": {
         "tags": [
           "Race"
         ],
-        "description": "Endpoint para obter um objeto race.",
-        "parameters": [],
+        "description": "Get an existing race.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {}
-      },
+      }
+    },
+    "/race": {
       "post": {
         "tags": [
           "Race"
         ],
-        "description": "Endpoint para criar um objeto race.",
+        "description": "Creates a new race.",
+        "parameters": [
+          {
+            "name": "newRace",
+            "in": "body",
+            "description": "Race's info.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/addRace"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/level/{id}": {
+      "get": {
+        "tags": [
+          "Level"
+        ],
+        "description": "Gets an existing level.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Level's id."
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/level": {
+      "post": {
+        "tags": [
+          "Level"
+        ],
+        "description": "Creates a new player.",
+        "parameters": [
+          {
+            "name": "newLevel",
+            "in": "body",
+            "description": "Level's info.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/addLevel"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/question/{id}": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Gets an existing question.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Question's id."
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/question": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Creates a new question.",
+        "parameters": [
+          {
+            "name": "newQuestion",
+            "in": "body",
+            "description": "Question's info.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/addQuestion"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/score/player/{id}": {
+      "get": {
+        "tags": [
+          "Score"
+        ],
+        "description": "Get an existing score by a player\\'s is",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/score": {
+      "post": {
+        "tags": [
+          "Score"
+        ],
+        "description": "Creates a new score.",
+        "parameters": [
+          {
+            "name": "newScore",
+            "in": "body",
+            "description": "Score's info.",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/addScore"
+            }
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [],
+        "description": "",
         "parameters": [],
         "responses": {}
       }
@@ -110,6 +270,10 @@
           "type": "string",
           "example": "analyst"
         },
+        "manager": {
+          "type": "boolean",
+          "example": false
+        },
         "skin_tone": {
           "type": "number",
           "example": 5
@@ -120,6 +284,9 @@
         }
       },
       "required": [
+        "email",
+        "occupation",
+        "manager",
         "skin_tone",
         "gender"
       ]
@@ -135,6 +302,10 @@
           "type": "string",
           "example": "analyst"
         },
+        "manager": {
+          "type": "boolean",
+          "example": false
+        },
         "skin_tone": {
           "type": "number",
           "example": 5
@@ -147,8 +318,241 @@
       "required": [
         "email",
         "occupation",
+        "manager",
         "skin_tone",
         "gender"
+      ]
+    },
+    "race": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 100
+        },
+        "name": {
+          "type": "string",
+          "example": "privilege game"
+        },
+        "description": {
+          "type": "string",
+          "example": "privilege game description"
+        },
+        "total_players": {
+          "type": "number",
+          "example": 100
+        },
+        "has_prize": {
+          "type": "boolean",
+          "example": true
+        },
+        "prize": {
+          "type": "string",
+          "example": "A cash prize of U$100.000,00"
+        },
+        "lane_size": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "total_players",
+        "has_prize",
+        "lane_size"
+      ]
+    },
+    "addRace": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "privilege game"
+        },
+        "description": {
+          "type": "string",
+          "example": "privilege game description"
+        },
+        "total_players": {
+          "type": "number",
+          "example": 100
+        },
+        "has_prize": {
+          "type": "boolean",
+          "example": true
+        },
+        "prize": {
+          "type": "string",
+          "example": "A cash prize of U$100.000,00"
+        },
+        "lane_size": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "name",
+        "total_players",
+        "has_prize",
+        "lane_size"
+      ]
+    },
+    "level": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 3
+        },
+        "boundary": {
+          "type": "number",
+          "example": 25
+        },
+        "name": {
+          "type": "string",
+          "example": "Intern"
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "id",
+        "boundary",
+        "name",
+        "race_id"
+      ]
+    },
+    "addLevel": {
+      "type": "object",
+      "properties": {
+        "boundary": {
+          "type": "number",
+          "example": 25
+        },
+        "name": {
+          "type": "string",
+          "example": "Intern"
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "boundary",
+        "name",
+        "race_id"
+      ]
+    },
+    "question": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 15
+        },
+        "content": {
+          "type": "string",
+          "example": "Are your both parents graduated?"
+        },
+        "score": {
+          "type": "number",
+          "example": 5
+        },
+        "type": {
+          "type": "number",
+          "example": 1
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "id",
+        "content",
+        "score",
+        "type",
+        "race_id"
+      ]
+    },
+    "addQuestion": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "example": "Are your both parents graduated?"
+        },
+        "score": {
+          "type": "number",
+          "example": 5
+        },
+        "type": {
+          "type": "number",
+          "example": 1
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "content",
+        "score",
+        "type",
+        "race_id"
+      ]
+    },
+    "score": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 20
+        },
+        "points": {
+          "type": "number",
+          "example": 40
+        },
+        "player_id": {
+          "type": "number",
+          "example": 1
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "id",
+        "points",
+        "player_id",
+        "race_id"
+      ]
+    },
+    "addScore": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "number",
+          "example": 40
+        },
+        "player_id": {
+          "type": "number",
+          "example": 1
+        },
+        "race_id": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "points",
+        "player_id",
+        "race_id"
       ]
     }
   }
