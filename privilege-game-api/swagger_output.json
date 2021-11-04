@@ -56,6 +56,31 @@
           }
         ],
         "responses": {}
+      },
+      "put": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Updates an existing player.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Player",
+            "in": "body",
+            "description": "Player's info.",
+            "required": true,
+            "type": "Player",
+            "schema": {
+              "$ref": "#/definitions/updateScore"
+            }
+          }
+        ],
+        "responses": {}
       }
     },
     "/player": {
@@ -66,7 +91,7 @@
         "description": "Creates a new player.",
         "parameters": [
           {
-            "name": "newUser",
+            "name": "newPlayer",
             "in": "body",
             "description": "Player's info.",
             "required": true,
@@ -263,6 +288,10 @@
         "gender": {
           "type": "number",
           "example": 3
+        },
+        "score": {
+          "type": "number",
+          "example": 0
         }
       },
       "required": [
@@ -303,6 +332,18 @@
         "manager",
         "skin_tone",
         "gender"
+      ]
+    },
+    "updateScore": {
+      "type": "object",
+      "properties": {
+        "score": {
+          "type": "number",
+          "example": 30
+        }
+      },
+      "required": [
+        "score"
       ]
     },
     "race": {

@@ -1,5 +1,6 @@
-
 const Player = require('../models/player')
+const {ObjectId} = require("mongodb");
+{ObjectId}
 
 // Exportar a função da controller
 module.exports = app => {
@@ -16,7 +17,7 @@ module.exports = app => {
     app.post('/player', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Creates a new player.'
-        /* #swagger.parameters['newUser'] = {
+        /* #swagger.parameters['newPlayer'] = {
                in: 'body',
                description: 'Player\'s info.',
                required: true,
@@ -29,4 +30,22 @@ module.exports = app => {
 
         res.send(p)
     });
+
+    // Put
+    app.put('/player/:id', async (req, res) => {
+        // #swagger.tags = ['Player']
+        // #swagger.description = 'Updates an existing player.'
+        /* #swagger.parameters['Player'] = {
+               in: 'body',
+               description: 'Player\'s info.',
+               required: true,
+               type: 'Player',
+               schema: { $ref: "#/definitions/updateScore" }
+        } */
+        const document = req.body;
+        const id = req.params.id;
+        const p = await Player.updatePlayer(id, document);
+
+        res.send(p);
+    })
 }

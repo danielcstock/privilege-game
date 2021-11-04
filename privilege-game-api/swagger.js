@@ -48,7 +48,8 @@ const doc = {
             $occupation: 'analyst',
             $manager: false,
             $skin_tone: 5,
-            $gender: 3
+            $gender: 3,
+            score: 0
         },
         addPlayer: {
             $email: 'jhon.doe@email.com',
@@ -56,6 +57,9 @@ const doc = {
             $manager: false,
             $skin_tone: 5,
             $gender: 3
+        },
+        updateScore: {
+            $score: 30
         },
         race: {
             $id: "6183f7afbf78b91c1a0e2f9e",

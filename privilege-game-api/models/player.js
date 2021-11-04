@@ -7,12 +7,11 @@ class Player {
     }
 
     async getPlayerById(pId){
-
         const query = { _id: ObjectId(pId) };
         const options = {
-            projection: { _id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, manager: 1 },
+            projection: { _id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, manager: 1, score: 1 },
         };
-        const player = await db.findAll("players", query, options);
+        const player = await db.findOne("players", query, options);
         return {player};
     }
 
@@ -26,6 +25,12 @@ class Player {
         player.score = 0;
         player._id = await db.insertOne("players", player);
         return {player};
+    }
+
+    async updatePlayer(pId, pPlayer){
+        const filter = { _id: ObjectId(pId) };
+        await db.updateOne("players", filter, pPlayer);
+        return {pPlayer};
     }
 }
 
