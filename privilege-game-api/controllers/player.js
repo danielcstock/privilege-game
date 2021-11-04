@@ -12,15 +12,6 @@ module.exports = app => {
         res.send(p);
     });
 
-    // Get
-    app.get('/player/email/:email', async (req, res) => {
-        // #swagger.tags = ['Player']
-        // #swagger.description = 'Gets an existing player.'
-        // #swagger.parameters['email'] = { description: 'Player\'s email address.' }
-        const p = await Player.getPlayerByEmail(req.params.email);
-        res.send(p);
-    });
-
     // Post
     app.post('/player', async (req, res) => {
         // #swagger.tags = ['Player']

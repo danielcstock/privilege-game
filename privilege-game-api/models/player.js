@@ -3,22 +3,12 @@ const ObjectId = require("mongodb").ObjectId;
 
 class Player {
     createPlayer(pPlayer) {
-        const p = this.insertPlayer(pPlayer);
-        return p;
+        return this.insertPlayer(pPlayer);
     }
 
     async getPlayerById(pId){
 
         const query = { _id: ObjectId(pId) };
-        const options = {
-            projection: { _id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, manager: 1 },
-        };
-        const player = await db.findAll("players", query, options);
-        return {player};
-    }
-
-    async getPlayerByEmail(pEmail){
-        const query = { email: pEmail };
         const options = {
             projection: { _id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, manager: 1 },
         };
