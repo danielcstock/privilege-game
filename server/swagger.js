@@ -5,8 +5,7 @@ const endpointsFiles =
         './controllers/player.js',
         './controllers/race.js',
         './controllers/level.js',
-        './controllers/question.js',
-        './controllers/score.js',
+        './controllers/question.js'
     ]
 
 const doc = {
@@ -46,7 +45,7 @@ const doc = {
         player: {
             $email: "jhon.doe@email.com",
             $occupation: 'analyst',
-            $manager: false,
+            $is_leader: false,
             $skin_tone: 5,
             $gender: 3,
             score: 0
@@ -54,7 +53,7 @@ const doc = {
         addPlayer: {
             $email: 'jhon.doe@email.com',
             $occupation: 'analyst',
-            $manager: false,
+            $is_leader: false,
             $skin_tone: 5,
             $gender: 3
         },
@@ -78,13 +77,16 @@ const doc = {
             prize: "A cash prize of U$100.000,00",
             $lane_size: 100
         },
+        updateRace: {
+            name: "privilege game",
+            description: "privilege game description",
+            total_players: 100,
+            has_prize: true,
+            prize: "A cash prize of U$100.000,00",
+            lane_size: 100
+        },
         level: {
             $id: 3,
-            $boundary: 25,
-            $name: 'Intern',
-            $race_id: 1
-        },
-        addLevel: {
             $boundary: 25,
             $name: 'Intern',
             $race_id: 1
@@ -100,17 +102,6 @@ const doc = {
             $content: 'Are your both parents graduated?',
             $score: 5,
             $type: 1,
-            $race_id: 1
-        },
-        score: {
-            $id: 20,
-            $points: 40,
-            $player_id: 1,
-            $race_id: 1
-        },
-        addScore: {
-            $points: 40,
-            $player_id: 1,
             $race_id: 1
         }
     }

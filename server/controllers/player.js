@@ -25,7 +25,7 @@ module.exports = app => {
         } */
 
         const player = req.body;
-        const p = await Player.createPlayer(player);
+        const p = await Player.insertPlayer(player);
 
         res.send(p)
     });
