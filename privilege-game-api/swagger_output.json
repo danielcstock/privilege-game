@@ -231,6 +231,12 @@
           }
         ],
         "responses": {}
+      },
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   },
@@ -246,6 +252,10 @@
           "type": "string",
           "example": "analyst"
         },
+        "manager": {
+          "type": "boolean",
+          "example": false
+        },
         "skin_tone": {
           "type": "number",
           "example": 5
@@ -258,6 +268,7 @@
       "required": [
         "email",
         "occupation",
+        "manager",
         "skin_tone",
         "gender"
       ]
@@ -273,6 +284,10 @@
           "type": "string",
           "example": "analyst"
         },
+        "manager": {
+          "type": "boolean",
+          "example": false
+        },
         "skin_tone": {
           "type": "number",
           "example": 5
@@ -285,6 +300,7 @@
       "required": [
         "email",
         "occupation",
+        "manager",
         "skin_tone",
         "gender"
       ]

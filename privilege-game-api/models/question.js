@@ -14,7 +14,6 @@ class Question {
         return { id, content, score, type, race_id };
     }
 
-
     insertQuestion(pQuestion){
         const id = 1;
         const content = pQuestion.content;

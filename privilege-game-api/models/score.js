@@ -29,9 +29,7 @@ class Score {
         return { id, points, player_id, race_id };
     }
 
-    selectScore(pScore){
-
-    }
+    selectScore(pScore){    }
 }
 
 module.exports = new Score();

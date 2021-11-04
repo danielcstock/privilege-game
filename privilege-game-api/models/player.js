@@ -1,3 +1,6 @@
+const Score = require('../models/score');
+const db = require('../config/db');
+
 class Player {
     createPlayer(pPlayer) {
         const p = this.insertPlayer(pPlayer);
@@ -5,13 +8,14 @@ class Player {
         return p;
     }
 
-    getPlayer(pId){
-        const id = pId;
-        const email = 'daniel.stock@unico.io';
-        const occupation = 'developer';
-        const skin_tone = 5;
-        const gender = 3;
-        return {id, email, occupation, skin_tone, gender};
+    async getPlayer(pId){
+        const query = { id: pId };
+        const options = {
+            sort: { "id": -1 },
+            projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, manager: 1 },
+        };
+        const player = await db.findAll("players", query, options);
+        return {player};
     }
 
 
@@ -19,13 +23,13 @@ class Player {
         const id = 1;
         const email = pPlayer.email;
         const occupation = pPlayer.occupation;
+        const manager = pPlayer.manager;
         const skin_tone = pPlayer.skin_tone;
         const gender = pPlayer.gender;
-        return {id, email, occupation, skin_tone, gender};
-    }
+        const score = new Score.createScore({
 
-    selectPlayer(pPlayer){
-
+        });
+        return {id, email, occupation, manager, skin_tone, gender, score};
     }
 }
 

@@ -4,11 +4,11 @@ const Player = require('../models/player')
 // Exportar a função da controller
 module.exports = app => {
     // Get
-    app.get('/player/:id', (req, res) => {
+    app.get('/player/:id', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Gets an existing player.'
         // #swagger.parameters['id'] = { description: 'Player\'s id.' }
-        p = Player.getPlayer(req.params.id);
+        p = await Player.getPlayer(req.params.id);
         res.send(p);
     });
 
