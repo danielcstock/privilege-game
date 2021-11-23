@@ -55,9 +55,6 @@ const doc = {
             $skin_tone: 5,
             $gender: 3
         },
-        updateScore: {
-            $score: 30
-        },
         race: {
             $id: "6183f7afbf78b91c1a0e2f9e",
             $name: "privilege game",
@@ -108,20 +105,21 @@ const doc = {
             $id: 3,
             $boundary: 25,
             $name: 'Intern',
-            $race_id: 1
+        },
+        addLevel: {
+            $boundary: 25,
+            $name: 'Intern',
         },
         question: {
             $id: 15,
             $content: 'Are your both parents graduated?',
             $score: 5,
             $type: 1,
-            $race_id: 1
         },
         addQuestion: {
             $content: 'Are your both parents graduated?',
             $score: 5,
             $type: 1,
-            $race_id: 1
         }
     }
 }

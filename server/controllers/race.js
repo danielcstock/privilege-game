@@ -1,5 +1,4 @@
 const Race = require("../models/race");
-const Player = require("../models/player");
 
 module.exports = app => {
     // Get
@@ -41,7 +40,7 @@ module.exports = app => {
         } */
         const document = req.body;
         const id = req.params.id;
-        const p = await Race.updateRace(id, document);
+        const p = await Race.updateRace(id, document.race);
 
         res.send(p);
     });

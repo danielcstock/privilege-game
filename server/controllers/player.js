@@ -1,5 +1,4 @@
 const Player = require('../models/player')
-const {ObjectId} = require("mongodb");
 
 // Exportar a função da controller
 module.exports = app => {
@@ -43,7 +42,7 @@ module.exports = app => {
         } */
         const document = req.body;
         const id = req.params.id;
-        const p = await Player.updatePlayer(id, document);
+        const p = await Player.updatePlayer(id, document.player);
 
         res.send(p);
     });

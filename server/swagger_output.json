@@ -267,18 +267,6 @@
         "gender"
       ]
     },
-    "updateScore": {
-      "type": "object",
-      "properties": {
-        "score": {
-          "type": "number",
-          "example": 30
-        }
-      },
-      "required": [
-        "score"
-      ]
-    },
     "race": {
       "type": "object",
       "properties": {
@@ -463,17 +451,29 @@
         "name": {
           "type": "string",
           "example": "Intern"
-        },
-        "race_id": {
-          "type": "number",
-          "example": 1
         }
       },
       "required": [
         "id",
         "boundary",
-        "name",
-        "race_id"
+        "name"
+      ]
+    },
+    "addLevel": {
+      "type": "object",
+      "properties": {
+        "boundary": {
+          "type": "number",
+          "example": 25
+        },
+        "name": {
+          "type": "string",
+          "example": "Intern"
+        }
+      },
+      "required": [
+        "boundary",
+        "name"
       ]
     },
     "question": {
@@ -494,18 +494,13 @@
         "type": {
           "type": "number",
           "example": 1
-        },
-        "race_id": {
-          "type": "number",
-          "example": 1
         }
       },
       "required": [
         "id",
         "content",
         "score",
-        "type",
-        "race_id"
+        "type"
       ]
     },
     "addQuestion": {
@@ -522,17 +517,12 @@
         "type": {
           "type": "number",
           "example": 1
-        },
-        "race_id": {
-          "type": "number",
-          "example": 1
         }
       },
       "required": [
         "content",
         "score",
-        "type",
-        "race_id"
+        "type"
       ]
     }
   }
