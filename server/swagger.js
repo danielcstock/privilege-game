@@ -4,8 +4,6 @@ const endpointsFiles =
     [
         './controllers/player.js',
         './controllers/race.js',
-        './controllers/level.js',
-        './controllers/question.js'
     ]
 
 const doc = {
@@ -67,7 +65,14 @@ const doc = {
             $total_players: 100,
             $has_prize: true,
             prize: "A cash prize of U$100.000,00",
-            $lane_size: 100
+            $lane_size: 100,
+            levels: [{
+                $boundary: 30,
+                $name: "Level 1"
+            },{
+                $boundary: 45,
+                $name: "Level 2"
+            }]
         },
         addRace: {
             $name: "privilege game",
@@ -75,7 +80,21 @@ const doc = {
             $total_players: 100,
             $has_prize: true,
             prize: "A cash prize of U$100.000,00",
-            $lane_size: 100
+            $lane_size: 100,
+            levels: [{
+                $boundary: 30,
+                $name: "Level 1"
+            },{
+                $boundary: 45,
+                $name: "Level 2"
+            }],
+            $questions:[
+                {
+                    $content: 'Are your both parents graduated?',
+                    $score: 5,
+                    $type: 1,
+                }
+            ]
         },
         updateRace: {
             name: "privilege game",
