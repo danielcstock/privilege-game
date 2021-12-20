@@ -11,6 +11,11 @@ module.exports = app => {
         res.send(p);
     });
 
+    app.get('/players', async(req, res) => {
+       const players = await Player.getAllPlayers();
+       res.send(players);
+    });
+
     // Post
     app.post('/player', async (req, res) => {
         // #swagger.tags = ['Player']
