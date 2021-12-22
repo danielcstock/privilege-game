@@ -41,6 +41,7 @@ const doc = {
     },
     definitions: {
         player: {
+            $id: 1,
             $email: "jhon.doe@email.com",
             $occupation: 'analyst',
             $is_leader: false,
@@ -49,6 +50,7 @@ const doc = {
             score: 0
         },
         addPlayer: {
+            $id: 1,
             $email: 'jhon.doe@email.com',
             $occupation: 'analyst',
             $is_leader: false,
@@ -56,7 +58,7 @@ const doc = {
             $gender: 3
         },
         race: {
-            $id: "6183f7afbf78b91c1a0e2f9e",
+            $id: 1,
             $name: "privilege game",
             description: "privilege game description",
             $total_players: 100,
@@ -72,6 +74,7 @@ const doc = {
             }]
         },
         addRace: {
+            $id: 1,
             $name: "privilege game",
             description: "privilege game description",
             $total_players: 100,
@@ -94,6 +97,7 @@ const doc = {
             ]
         },
         updateRace: {
+            id: 1,
             name: "privilege game",
             description: "privilege game description",
             total_players: 100,

@@ -12,8 +12,13 @@ module.exports = app => {
     });
 
     app.get('/players', async(req, res) => {
-       const players = await Player.getAllPlayers();
-       res.send(players);
+        // #swagger.tags = ['Player']
+        // #swagger.description = 'Get all players.'
+        const players = await Player.getAllPlayers();
+        res.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        res.set('Content-Type', 'application/json');
+        res.set('X-Total-Count', players.count);
+        res.send(players);
     });
 
     // Post

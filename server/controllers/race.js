@@ -1,4 +1,5 @@
 const Race = require("../models/race");
+const Player = require("../models/player");
 
 module.exports = app => {
     // Get
@@ -8,6 +9,17 @@ module.exports = app => {
         // #swagger.description = 'Get an existing race.'
         r = await Race.getRaceById(req.params.id);
         res.send(r);
+    });
+
+    app.get('/races', async(req, res) =>
+    {
+        // #swagger.tags = ['Race']
+        // #swagger.description = 'Get all races.'
+        const races = await Race.getAllRaces();
+        res.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        res.set('Content-Type', 'application/json');
+        res.set('X-Total-Count', races.count);
+        res.send(races);
     });
 
     // Post

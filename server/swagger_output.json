@@ -98,6 +98,16 @@
         "responses": {}
       }
     },
+    "/players": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Get all players.",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/player": {
       "post": {
         "tags": [
@@ -176,6 +186,16 @@
         "responses": {}
       }
     },
+    "/races": {
+      "get": {
+        "tags": [
+          "Race"
+        ],
+        "description": "Get all races.",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/race": {
       "post": {
         "tags": [
@@ -202,6 +222,10 @@
     "player": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
         "email": {
           "type": "string",
           "example": "jhon.doe@email.com"
@@ -228,6 +252,7 @@
         }
       },
       "required": [
+        "id",
         "email",
         "occupation",
         "is_leader",
@@ -238,6 +263,10 @@
     "addPlayer": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
         "email": {
           "type": "string",
           "example": "jhon.doe@email.com"
@@ -260,6 +289,7 @@
         }
       },
       "required": [
+        "id",
         "email",
         "occupation",
         "is_leader",
@@ -271,8 +301,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
-          "example": "6183f7afbf78b91c1a0e2f9e"
+          "type": "number",
+          "example": 1
         },
         "name": {
           "type": "string",
@@ -330,6 +360,10 @@
     "addRace": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
         "name": {
           "type": "string",
           "example": "privilege game"
@@ -401,6 +435,7 @@
         }
       },
       "required": [
+        "id",
         "name",
         "total_players",
         "has_prize",
@@ -411,6 +446,10 @@
     "updateRace": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
         "name": {
           "type": "string",
           "example": "privilege game"

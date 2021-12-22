@@ -3,9 +3,9 @@ const ObjectId = require("mongodb").ObjectId;
 
 class Player {
     async getPlayerById(pId){
-        const query = { _id: ObjectId(pId) };
+        const query = { id: pId };
         const options = {
-            projection: { _id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
+            projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
         };
         const player = await db.findOne("players", query, options);
         return {player};
@@ -13,54 +13,14 @@ class Player {
 
     async getAllPlayers(){
         const options = {
-            projection: { id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
+            projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
         };
-        const player = await db.find("players", options);
-        const players = [
-            {
-                _id: 1,
-                email: 'daniel@email.com',
-                occupation: 1,
-                skin_tone: 1,
-                gender: 1,
-                is_leader: 1,
-                score: 1
-            },
-            {
-                _id: 1,
-                email: 'wendel@email.com',
-                occupation: 1,
-                skin_tone: 1,
-                gender: 1,
-                is_leader: 1,
-                score: 1
-            }
-        ];
-
-        return [
-            {
-                id: 1,
-                email: 'daniel@email.com',
-                occupation: 1,
-                skin_tone: 1,
-                gender: 1,
-                is_leader: 1,
-                score: 1
-            },
-            {
-                id: 2,
-                email: 'wendel@email.com',
-                occupation: 1,
-                skin_tone: 1,
-                gender: 1,
-                is_leader: 1,
-                score: 1
-            }
-        ];
+        return await db.find("players", options);
     }
 
     async insertPlayer(pPlayer){
         const player = new Player();
+        player.id = pPlayer.id;
         player.email = pPlayer.email;
         player.occupation = pPlayer.occupation;
         player.is_leader = pPlayer.is_leader;
@@ -72,13 +32,13 @@ class Player {
     }
 
     async updatePlayer(pId, pPlayer){
-        const filter = { _id: ObjectId(pId) };
+        const filter = { id: pId };
         await db.updateOne("players", filter, pPlayer);
         return {pPlayer};
     }
 
     async deletePlayer(pId){
-        const filter = { _id: ObjectId(pId) };
+        const filter = { id: pId };
         const result = await db.deleteOne("players", filter);
         return {result};
     }
