@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = customExpress();
 
 http.createServer(app).listen(4000)
-app.use(cors());
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 console.log("Listening at:// port:%s (HTTP)", 4000)

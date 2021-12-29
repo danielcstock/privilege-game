@@ -52,7 +52,7 @@ module.exports = app => {
         } */
         const document = req.body;
         const id = req.params.id;
-        const p = await Race.updateRace(id, document.race);
+        const p = await Race.updateRace(id, document);
 
         res.send(p);
     });

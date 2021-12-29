@@ -3,9 +3,9 @@ const ObjectId = require("mongodb").ObjectId;
 
 class Race {
     async getRaceById(pId){
-        const query = { id: pId };
+        const query = { id: Number(pId) };
         const options = {
-            projection: { _id: 1, name: 1, description: 1, total_players: 1, prize: 1, has_prize: 1, lane_size: 1, levels: 1, questions: 1 },
+            projection: { name: 1, description: 1, total_players: 1, prize: 1, has_prize: 1, lane_size: 1, levels: 1, questions: 1 },
         };
         const race = await db.findOne("races", query, options);
         return {race};
@@ -34,13 +34,13 @@ class Race {
     }
 
     async updateRace(pId, pRace){
-        const filter = { id: pId };
+        const filter = { id: Number(pId) };
         await db.updateOne("races", filter, pRace);
         return {pRace};
     }
 
     async deleteRace(pId){
-        const filter = { id: pId };
+        const filter = { id : Number(pId) };
         const result = await db.deleteOne("races", filter);
         return {result};
     }
