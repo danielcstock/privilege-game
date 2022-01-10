@@ -17,22 +17,6 @@
     "http",
     "https"
   ],
-  "securityDefinitions": {
-    "api_key": {
-      "type": "apiKey",
-      "name": "api_key",
-      "in": "header"
-    },
-    "petstore_auth": {
-      "type": "oauth2",
-      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
-      "flow": "implicit",
-      "scopes": {
-        "read_pets": "read your pets",
-        "write_pets": "modify pets in your account"
-      }
-    }
-  },
   "consumes": [
     "application/json"
   ],
@@ -129,7 +113,7 @@
         "responses": {}
       }
     },
-    "/race/{id}": {
+    "/races/{id}": {
       "get": {
         "tags": [
           "Race"
@@ -194,9 +178,7 @@
         "description": "Get all races.",
         "parameters": [],
         "responses": {}
-      }
-    },
-    "/race": {
+      },
       "post": {
         "tags": [
           "Race"
@@ -301,8 +283,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "number",
-          "example": 1
+          "type": "string",
+          "example": "1"
         },
         "name": {
           "type": "string",
@@ -327,6 +309,9 @@
         "lane_size": {
           "type": "number",
           "example": 100
+        },
+        "status": {
+          "type": "symbol"
         },
         "levels": {
           "type": "array",
@@ -361,8 +346,8 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "number",
-          "example": 1
+          "type": "string",
+          "example": "1"
         },
         "name": {
           "type": "string",
@@ -388,31 +373,15 @@
           "type": "number",
           "example": 100
         },
-        "levels": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "boundary": {
-                "type": "number",
-                "example": 45
-              },
-              "name": {
-                "type": "string",
-                "example": "Level 2"
-              }
-            },
-            "required": [
-              "boundary",
-              "name"
-            ]
-          }
-        },
         "questions": {
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
               "content": {
                 "type": "string",
                 "example": "Are your both parents graduated?"
@@ -427,6 +396,7 @@
               }
             },
             "required": [
+              "id",
               "content",
               "score",
               "type"
@@ -446,10 +416,6 @@
     "updateRace": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "number",
-          "example": 1
-        },
         "name": {
           "type": "string",
           "example": "privilege game"
@@ -473,6 +439,30 @@
         "lane_size": {
           "type": "number",
           "example": 100
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              },
+              "content": {
+                "type": "string",
+                "example": "Are your both parents graduated?"
+              },
+              "score": {
+                "type": "number",
+                "example": 5
+              },
+              "type": {
+                "type": "number",
+                "example": 1
+              }
+            }
+          }
         }
       }
     },

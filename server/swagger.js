@@ -1,5 +1,6 @@
 const swaggerAutogen = require('swagger-autogen')()
-const outputFile = './swagger_output.json'
+const outputFile = './swagger_output.json';
+const Enums = require("./models/enums");
 const endpointsFiles =
     [
         './controllers/player.js',
@@ -23,22 +24,6 @@ const doc = {
             "description": "Endpoints"
         }
     ],
-    securityDefinitions: {
-        api_key: {
-            type: "apiKey",
-            name: "api_key",
-            in: "header"
-        },
-        petstore_auth: {
-            type: "oauth2",
-            authorizationUrl: "https://petstore.swagger.io/oauth/authorize",
-            flow: "implicit",
-            scopes: {
-                read_pets: "read your pets",
-                write_pets: "modify pets in your account"
-            }
-        }
-    },
     definitions: {
         player: {
             $id: 1,
@@ -58,13 +43,14 @@ const doc = {
             $gender: 3
         },
         race: {
-            $id: 1,
+            $id: "1",
             $name: "privilege game",
             description: "privilege game description",
             $total_players: 100,
             $has_prize: true,
             prize: "A cash prize of U$100.000,00",
             $lane_size: 100,
+            status: Enums.READY,
             levels: [{
                 $boundary: 30,
                 $name: "Level 1"
@@ -74,22 +60,16 @@ const doc = {
             }]
         },
         addRace: {
-            $id: 1,
+            $id: "1",
             $name: "privilege game",
             description: "privilege game description",
             $total_players: 100,
             $has_prize: true,
             prize: "A cash prize of U$100.000,00",
             $lane_size: 100,
-            levels: [{
-                $boundary: 30,
-                $name: "Level 1"
-            },{
-                $boundary: 45,
-                $name: "Level 2"
-            }],
             $questions:[
                 {
+                    $id: 1,
                     $content: 'Are your both parents graduated?',
                     $score: 5,
                     $type: 1,
@@ -97,13 +77,20 @@ const doc = {
             ]
         },
         updateRace: {
-            id: 1,
             name: "privilege game",
             description: "privilege game description",
             total_players: 100,
             has_prize: true,
             prize: "A cash prize of U$100.000,00",
-            lane_size: 100
+            lane_size: 100,
+            questions: [
+                {
+                    id: 1,
+                    content: "Are your both parents graduated?",
+                    score: 5,
+                    type: 1
+                }
+            ]
         },
         level: {
             $id: 3,

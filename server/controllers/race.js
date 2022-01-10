@@ -1,14 +1,13 @@
 const Race = require("../models/race");
-const Player = require("../models/player");
 
 module.exports = app => {
     // Get
-    app.get('/race/:id', async (req, res) =>
+    app.get('/races/:id', async (req, res) =>
     {
         // #swagger.tags = ['Race']
         // #swagger.description = 'Get an existing race.'
-        r = await Race.getRaceById(req.params.id);
-        res.send(r);
+        const r = await Race.getRaceById(req.params.id);
+        res.send(r.race);
     });
 
     app.get('/races', async(req, res) =>
@@ -23,7 +22,7 @@ module.exports = app => {
     });
 
     // Post
-    app.post('/race', async (req, res) => {
+    app.post('/races', async (req, res) => {
         // #swagger.tags = ['Race']
         // #swagger.description = 'Creates a new race.'
         /* #swagger.parameters['newRace'] = {
@@ -36,11 +35,11 @@ module.exports = app => {
         const race = req.body;
         const r = await Race.insertRace(race);
 
-        res.send(r);
+        res.send(r.race);
     });
 
     // Put
-    app.put('/race/:id', async (req, res) => {
+    app.put('/races/:id', async (req, res) => {
         // #swagger.tags = ['Race']
         // #swagger.description = 'Updates an existing race by id.'
         /* #swagger.parameters['race'] = {
@@ -54,11 +53,11 @@ module.exports = app => {
         const id = req.params.id;
         const p = await Race.updateRace(id, document);
 
-        res.send(p);
+        res.send(p.race);
     });
 
     // Delete
-    app.delete('/race/:id', async (req, res) => {
+    app.delete('/races/:id', async (req, res) => {
         // #swagger.tags = ['Race']
         // #swagger.description = 'Deletes an existing race by id.'
         const id = req.params.id;
