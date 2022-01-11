@@ -24,7 +24,7 @@
     "application/json"
   ],
   "paths": {
-    "/player/{id}": {
+    "/players/{id}": {
       "get": {
         "tags": [
           "Player"
@@ -90,9 +90,7 @@
         "description": "Get all players.",
         "parameters": [],
         "responses": {}
-      }
-    },
-    "/player": {
+      },
       "post": {
         "tags": [
           "Player"

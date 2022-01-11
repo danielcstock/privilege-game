@@ -1,9 +1,8 @@
 const Player = require('../models/player')
 
-// Exportar a função da controller
 module.exports = app => {
     // Get
-    app.get('/player/:id', async (req, res) => {
+    app.get('/players/:id', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Gets an existing player.'
         // #swagger.parameters['id'] = { description: 'Player\'s id.' }
@@ -17,12 +16,12 @@ module.exports = app => {
         const players = await Player.getAllPlayers();
         res.header('Access-Control-Expose-Headers', 'X-Total-Count')
         res.set('Content-Type', 'application/json');
-        res.set('X-Total-Count', players.count);
+        res.set('x-total-count', players.length);
         res.send(players);
     });
 
     // Post
-    app.post('/player', async (req, res) => {
+    app.post('/players', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Creates a new player.'
         /* #swagger.parameters['newPlayer'] = {
@@ -40,7 +39,7 @@ module.exports = app => {
     });
 
     // Put
-    app.put('/player/:id', async (req, res) => {
+    app.put('/players/:id', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Updates an existing player by id.'
         /* #swagger.parameters['score'] = {
@@ -58,7 +57,7 @@ module.exports = app => {
     });
 
     // Delete
-    app.delete('/player/:id', async (req, res) => {
+    app.delete('/players/:id', async (req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Deletes an existing player by id.'
         const id = req.params.id;

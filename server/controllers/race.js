@@ -17,7 +17,7 @@ module.exports = app => {
         const races = await Race.getAllRaces();
         res.header('Access-Control-Expose-Headers', 'X-Total-Count')
         res.set('Content-Type', 'application/json');
-        res.set('X-Total-Count', races.count);
+        res.set('X-Total-Count', races.length);
         res.send(races);
     });
 
