@@ -1,5 +1,6 @@
 const { MongoClient, ObjectId} = require('mongodb');
-
+const connection_string = "";
+const database_name = "cluster0";
 const uri = connection_string;
 const client = new MongoClient(uri);
 
@@ -35,7 +36,6 @@ async function insertOne(pCollection, pDocument){
         const database = client.db(database_name);
         const collection = database.collection(pCollection);
         const result = await collection.insertOne(pDocument);
-        console.log(`A document was inserted with the _id: ${result.insertedId}`);
         return result.insertedId;
     } finally {
         await client.close();
