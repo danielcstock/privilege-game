@@ -31,6 +31,17 @@ module.exports = app => {
         res.send(players);
     });
 
+    app.get('/players/gender/:gender', async(req, res) => {
+        // #swagger.tags = ['Player']
+        // #swagger.description = 'Gets players by gender.'
+        // #swagger.parameters['gender'] = { description: 'Player\'s gender.' }
+        const players = await Player.getPlayersByGender(req.params.gender);
+        res.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        res.set('Content-Type', 'application/json');
+        res.set('x-total-count', players.length);
+        res.send(players);
+    });
+
     app.get('/players/skintone/:skin_tone', async(req, res) => {
         // #swagger.tags = ['Player']
         // #swagger.description = 'Gets players by skin tone.'

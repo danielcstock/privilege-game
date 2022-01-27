@@ -2,10 +2,9 @@ const db = require('../config/db');
 
 class Player {
     getPlayersOptions(){
-        const options = {
+        return {
             projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
         };
-        return options;
     }
 
     async getAllPlayers(){
@@ -25,6 +24,11 @@ class Player {
 
     async getPlayersByOccupation(pOccupation){
         const query = { occupation: pOccupation};
+        return await db.find("players", query, this.getPlayersOptions());
+    }
+
+    async getPlayersByGender(pGender){
+        const query = { gender: parseInt(pGender) };
         return await db.find("players", query, this.getPlayersOptions());
     }
 

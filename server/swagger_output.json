@@ -129,6 +129,24 @@
         "responses": {}
       }
     },
+    "/players/gender/{gender}": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Gets players by gender.",
+        "parameters": [
+          {
+            "name": "gender",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Player's gender."
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/players/skintone/{skin_tone}": {
       "get": {
         "tags": [
