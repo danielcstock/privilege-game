@@ -53,6 +53,17 @@ module.exports = app => {
         res.send(players);
     });
 
+    app.get('/players/race/:race', async(req, res) => {
+        // #swagger.tags = ['Player']
+        // #swagger.description = 'Gets players by race.'
+        // #swagger.parameters['race'] = { description: 'Player\'s race.' }
+        const players = await Player.getPlayersByRace(req.params.race);
+        res.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        res.set('Content-Type', 'application/json');
+        res.set('x-total-count', players.length);
+        res.send(players);
+    });
+
     // Post
     app.post('/players', async (req, res) => {
         // #swagger.tags = ['Player']

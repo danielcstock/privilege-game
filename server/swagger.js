@@ -32,6 +32,7 @@ const doc = {
             $is_leader: false,
             $skin_tone: 5,
             $gender: 3,
+            $race: `race001`,
             score: 0
         },
         addPlayer: {
@@ -40,7 +41,8 @@ const doc = {
             $occupation: 'analyst',
             $is_leader: false,
             $skin_tone: 5,
-            $gender: 3
+            $gender: 3,
+            $race: 'race001'
         },
         race: {
             $id: "1",

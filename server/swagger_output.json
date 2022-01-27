@@ -165,6 +165,24 @@
         "responses": {}
       }
     },
+    "/players/race/{race}": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Gets players by race.",
+        "parameters": [
+          {
+            "name": "race",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Player's race."
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/races/{id}": {
       "get": {
         "tags": [
@@ -280,6 +298,10 @@
           "type": "number",
           "example": 3
         },
+        "race": {
+          "type": "string",
+          "example": "race001"
+        },
         "score": {
           "type": "number",
           "example": 0
@@ -291,7 +313,8 @@
         "occupation",
         "is_leader",
         "skin_tone",
-        "gender"
+        "gender",
+        "race"
       ]
     },
     "addPlayer": {
@@ -320,6 +343,10 @@
         "gender": {
           "type": "number",
           "example": 3
+        },
+        "race": {
+          "type": "string",
+          "example": "race001"
         }
       },
       "required": [
@@ -328,7 +355,8 @@
         "occupation",
         "is_leader",
         "skin_tone",
-        "gender"
+        "gender",
+        "race"
       ]
     },
     "race": {

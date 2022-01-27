@@ -49,8 +49,8 @@ export const RaceEdit = props => (
                     <TextInput source="content" />
                     <NumberInput source="score" value={1}/>
                     <AutocompleteInput source="type" choices={[
-                        { id: 'boolean', name: 'Boolean' },
-                        { id: 'scale', name: 'Scale' }
+                        { id: '1', name: 'Boolean' },
+                        { id: '2', name: 'Scale' }
                     ]} />
                 </SimpleFormIterator>
             </ArrayInput>

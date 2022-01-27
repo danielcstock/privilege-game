@@ -11,6 +11,7 @@ export const PlayerList = props => (
             <NumberField source="skin_tone" />
             <NumberField source="gender" />
             <NumberField source="score" />
+            <TextField source="race" />
         </Datagrid>
     </List>
 );
