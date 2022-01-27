@@ -25,7 +25,7 @@ class Race {
     }
     
     async getAllRaces(){
-        return await db.find("races", options);
+        return await db.findAll("races", options);
     }
 
     async insertRace(pRace){

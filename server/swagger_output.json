@@ -24,6 +24,35 @@
     "application/json"
   ],
   "paths": {
+    "/players": {
+      "get": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Get all players.",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [
+          "Player"
+        ],
+        "description": "Creates a new player.",
+        "parameters": [
+          {
+            "name": "newPlayer",
+            "in": "body",
+            "description": "Player's info.",
+            "required": true,
+            "type": "Player",
+            "schema": {
+              "$ref": "#/definitions/addPlayer"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
     "/players/{id}": {
       "get": {
         "tags": [
@@ -82,30 +111,37 @@
         "responses": {}
       }
     },
-    "/players": {
+    "/players/occupation/{occupation}": {
       "get": {
         "tags": [
           "Player"
         ],
-        "description": "Get all players.",
-        "parameters": [],
+        "description": "Gets players by occupation.",
+        "parameters": [
+          {
+            "name": "occupation",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Player's occupation."
+          }
+        ],
         "responses": {}
-      },
-      "post": {
+      }
+    },
+    "/players/skintone/{skin_tone}": {
+      "get": {
         "tags": [
           "Player"
         ],
-        "description": "Creates a new player.",
+        "description": "Gets players by skin tone.",
         "parameters": [
           {
-            "name": "newPlayer",
-            "in": "body",
-            "description": "Player's info.",
+            "name": "skin_tone",
+            "in": "path",
             "required": true,
-            "type": "Player",
-            "schema": {
-              "$ref": "#/definitions/addPlayer"
-            }
+            "type": "string",
+            "description": "Player's skin tone."
           }
         ],
         "responses": {}

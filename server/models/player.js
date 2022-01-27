@@ -1,21 +1,31 @@
 const db = require('../config/db');
-const ObjectId = require("mongodb").ObjectId;
 
 class Player {
-    async getPlayerById(pId){
-        const query = { id: pId };
+    getPlayersOptions(){
         const options = {
             projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
         };
-        const player = await db.findOne("players", query, options);
-        return {player};
+        return options;
     }
 
     async getAllPlayers(){
-        const options = {
-            projection: { _id: 0, id: 1, email: 1, occupation: 1, skin_tone: 1, gender: 1, is_leader: 1, score: 1 },
-        };
-        return await db.find("players", options);
+        return await db.findAll("players", this.getPlayersOptions());
+    }
+
+    async getPlayerById(pId){
+        const query = { id: pId };
+        const player = await db.findOne("players", query, this.getPlayersOptions());
+        return {player};
+    }
+
+    async getPlayersBySkinTone(pSkinTone){
+        const query = { skin_tone: parseInt(pSkinTone) };
+        return await db.find("players", query, this.getPlayersOptions());
+    }
+
+    async getPlayersByOccupation(pOccupation){
+        const query = { occupation: pOccupation};
+        return await db.find("players", query, this.getPlayersOptions());
     }
 
     async insertPlayer(pPlayer){

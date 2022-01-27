@@ -1,8 +1,9 @@
 // in models/authProvider.js
 export default {
     // called when the user attempts to log in
-    login: ({ username }) => {
-        localStorage.setItem('username', username);
+    login: (params) => {
+        console.log(params);
+        localStorage.setItem('username', params.username);
         // accept all username/password combinations
         return Promise.resolve();
     },

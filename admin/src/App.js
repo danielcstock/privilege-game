@@ -13,7 +13,10 @@ import AuthProvider from './models/authProvider';
 const dataProvider = jsonServerProvider('http://localhost:4000');
 
 const App = () => (
-    <Admin dashboard={Dashboard} dataProvider={dataProvider} authProvider={AuthProvider}>
+    <Admin
+        dashboard={Dashboard}
+        dataProvider={dataProvider}
+        authProvider={AuthProvider}>
         <Resource name="players" list={ PlayerList } icon={UserIcon} />
         <Resource name="races" list={ RaceList } edit={ RaceEdit } create={ RaceCreate } icon={RaceIcon} />
     </Admin>
