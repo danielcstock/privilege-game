@@ -18,7 +18,11 @@ const App = () => (
         dataProvider={dataProvider}
         authProvider={AuthProvider}>
         <Resource name="players" list={ PlayerList } icon={UserIcon} />
-        <Resource name="races" list={ RaceList } edit={ RaceEdit } create={ RaceCreate } icon={RaceIcon} />
+        <Resource name="races"
+                  list={ RaceList }
+                  edit={ RaceEdit }
+                  create={ RaceCreate }
+                  icon={RaceIcon} />
     </Admin>
 );
 export default App;

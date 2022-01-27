@@ -8,10 +8,11 @@ import {
     SimpleForm,
     TextInput,
     NumberInput,
-    BooleanInput,
     ArrayInput,
     SimpleFormIterator,
     Create,
+    AutocompleteInput,
+    CloneButton
 } from 'react-admin';
 
 export const RaceList = props => (
@@ -22,6 +23,7 @@ export const RaceList = props => (
             <TextField source="description" />
             <NumberField source="total_players" />
             <NumberField source="lane_size" />
+            <CloneButton />
         </Datagrid>
     </List>
 );
@@ -34,16 +36,22 @@ export const RaceEdit = props => (
             <TextInput source="name" />
             <TextInput source="description" />
             <NumberInput source="total_players" />
-            <TextInput source="prize" />
-            <BooleanInput source="has_prize" />
             <NumberInput source="lane_size" />
-            <TextInput source="status" />
+            <AutocompleteInput source="status" choices={[
+                { id: 'ready', name: 'Ready' },
+                { id: 'in progress', name: 'In Progress' },
+                { id: 'finished', name: 'Finished' },
+                { id: 'canceled', name: 'Canceled' },
+            ]} />
             <ArrayInput source="questions">
                 <SimpleFormIterator>
                     <TextInput source="id" />
                     <TextInput source="content" />
-                    <NumberInput source="score" />
-                    <NumberInput source="type" />
+                    <NumberInput source="score" value={1}/>
+                    <AutocompleteInput source="type" choices={[
+                        { id: 'boolean', name: 'Boolean' },
+                        { id: 'scale', name: 'Scale' }
+                    ]} />
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
@@ -58,8 +66,6 @@ export const RaceCreate = (props) => (
             <TextInput source="name" />
             <TextInput source="description" />
             <NumberInput source="total_players" />
-            <TextInput source="prize" />
-            <BooleanInput source="has_prize" />
             <NumberInput source="lane_size" />
             <TextInput source="status" />
             <ArrayInput source="questions">
