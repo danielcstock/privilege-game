@@ -7,6 +7,7 @@ import UserIcon from '@material-ui/icons/Group';
 import RaceIcon from '@material-ui/icons/DirectionsRun'
 import {RaceList, RaceEdit, RaceCreate} from "./models/races";
 import {PlayerList} from './models/players';
+import {SessionList, SessionEdit} from './models/sessions';
 import Dashboard from './models/dashboard';
 import AuthProvider from './models/authProvider';
 
@@ -21,6 +22,11 @@ const App = () => (
         <Resource name="races"
                   list={ RaceList }
                   edit={ RaceEdit }
+                  create={ RaceCreate }
+                  icon={RaceIcon} />
+        <Resource name="sessions"
+                  list={ SessionList }
+                  edit={ SessionEdit }
                   create={ RaceCreate }
                   icon={RaceIcon} />
     </Admin>

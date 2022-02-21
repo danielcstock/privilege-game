@@ -37,21 +37,13 @@ export const RaceEdit = props => (
             <TextInput source="description" />
             <NumberInput source="total_players" />
             <NumberInput source="lane_size" />
-            <AutocompleteInput source="status" choices={[
-                { id: 'ready', name: 'Ready' },
-                { id: 'in progress', name: 'In Progress' },
-                { id: 'finished', name: 'Finished' },
-                { id: 'canceled', name: 'Canceled' },
-            ]} />
+            <TextField source="status" />
             <ArrayInput source="questions">
                 <SimpleFormIterator>
                     <TextInput source="id" />
                     <TextInput source="content" />
                     <NumberInput source="score" value={1}/>
-                    <AutocompleteInput source="type" choices={[
-                        { id: '1', name: 'Boolean' },
-                        { id: '2', name: 'Scale' }
-                    ]} />
+                    <TextField source="type" />
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>

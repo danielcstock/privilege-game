@@ -12,6 +12,7 @@ export const PlayerList = props => (
             <NumberField source="gender" />
             <NumberField source="score" />
             <TextField source="race" />
+            <TextField source="is_active" />
         </Datagrid>
     </List>
 );

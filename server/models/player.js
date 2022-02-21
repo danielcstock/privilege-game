@@ -12,7 +12,9 @@ class Player {
                 gender: 1,
                 is_leader: 1,
                 race: 1,
-                score: 1 },
+                score: 1 ,
+                is_active: 1
+            },
         };
     }
 
@@ -56,6 +58,7 @@ class Player {
         player.gender = pPlayer.gender;
         player.score = 0;
         player.race = pPlayer.race;
+        player.is_active = true;
         player._id = await db.insertOne("players", player);
         return {player};
     }

@@ -5,6 +5,7 @@ const endpointsFiles =
     [
         './controllers/player.js',
         './controllers/race.js',
+        './controllers/session.js',
     ]
 
 const doc = {
@@ -33,7 +34,8 @@ const doc = {
             $skin_tone: 5,
             $gender: 3,
             $race: `race001`,
-            score: 0
+            score: 0,
+            is_active: true,
         },
         addPlayer: {
             $id: 1,
@@ -73,8 +75,9 @@ const doc = {
                 {
                     $id: 1,
                     $content: 'Are your both parents graduated?',
-                    $score: 5,
-                    $type: 1,
+                    $score: 1,
+                    $type: 'Boolean',
+                    $status: 'Open',
                 }
             ]
         },
@@ -88,31 +91,21 @@ const doc = {
             questions: [
                 {
                     id: 1,
-                    content: "Are your both parents graduated?",
-                    score: 5,
-                    type: 1
+                    content: 'Are your both parents graduated?',
+                    score: 1,
+                    type: 'Range',
+                    status: 'Close',
                 }
             ]
         },
-        level: {
+        session: {
             $id: 3,
-            $boundary: 25,
-            $name: 'Intern',
-        },
-        addLevel: {
-            $boundary: 25,
-            $name: 'Intern',
-        },
-        question: {
-            $id: 15,
-            $content: 'Are your both parents graduated?',
-            $score: 5,
-            $type: 1,
-        },
-        addQuestion: {
-            $content: 'Are your both parents graduated?',
-            $score: 5,
-            $type: 1,
+            $name: "Session 001",
+            $status: "Ready",
+            $questions: {
+                $content: "Are your both parents graduated?",
+                $status: 'Close'
+            }
         }
     }
 }
