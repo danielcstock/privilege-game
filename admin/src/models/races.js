@@ -66,6 +66,7 @@ export const RaceCreate = (props) => (
                     <TextInput source="content" />
                     <NumberInput source="score" />
                     <NumberInput source="type" />
+                    <TextInput source="status" value="Open"/>
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>

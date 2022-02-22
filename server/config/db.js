@@ -15,14 +15,25 @@ async function findOne(pCollection, pFilter, pOptions) {
     }
 }
 
-async function find(pCollection, pOptions){
+async function findAll(pCollection, pOptions){
     try {
         await client.connect();
         const database = client.db(database_name);
         const collection = database.collection(pCollection);
-        // return await collection.find({ }, pOptions);
         const cursor = collection.find({ id: {$exists:true}}, pOptions);
-        // replace console.dir with your callback to access individual elements
+        const items = await cursor.toArray();
+        return items;
+    } finally {
+        await client.close();
+    }
+}
+
+async function find(pCollection, pQuery, pOptions){
+    try {
+        await client.connect();
+        const database = client.db(database_name);
+        const collection = database.collection(pCollection);
+        const cursor = collection.find(pQuery, pOptions);
         const items = await cursor.toArray();
         return items;
     } finally {
@@ -68,5 +79,5 @@ async function deleteOne(pCollection, pFilter){
     }
 }
 
-module.exports = { findOne, find, insertOne, updateOne, deleteOne }
+module.exports = { findOne, find, findAll, insertOne, updateOne, deleteOne }
 
