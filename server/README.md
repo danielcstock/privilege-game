@@ -2,7 +2,7 @@
 
 ### Run server
 ```
-npm start
+CONNECTION_STRING="" CLUSTER_NAME="" npm start
 ```
 
 ### Update API documentation
