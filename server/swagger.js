@@ -6,6 +6,7 @@ const endpointsFiles =
         './controllers/player.js',
         './controllers/race.js',
         './controllers/session.js',
+        './controllers/user.js',
     ]
 
 const doc = {

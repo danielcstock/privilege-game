@@ -1,44 +1,46 @@
-const { MongoClient, ObjectId} = require('mongodb');
-const connection_string = "";
-const database_name = "cluster0";
-const uri = connection_string;
-const client = new MongoClient(uri);
+const { MongoClient } = require('mongodb');
+const database_name = process.env.CLUSTER_NAME;
+const client = new MongoClient(process.env.CONNECTION_STRING);
 
 async function findOne(pCollection, pFilter, pOptions) {
+    let result;
     try {
         await client.connect();
         const database = client.db(database_name);
         const collection = database.collection(pCollection);
-        return await collection.findOne(pFilter, pOptions);
+        result = await collection.findOne(pFilter, pOptions);
     } finally {
         await client.close();
     }
+    return result;
 }
 
 async function findAll(pCollection, pOptions){
+    let result;
     try {
         await client.connect();
         const database = client.db(database_name);
         const collection = database.collection(pCollection);
         const cursor = collection.find({ id: {$exists:true}}, pOptions);
-        const items = await cursor.toArray();
-        return items;
+        result = await cursor.toArray();
     } finally {
         await client.close();
     }
+    return result;
 }
 
 async function find(pCollection, pQuery, pOptions){
+    let result;
     try {
         await client.connect();
         const database = client.db(database_name);
         const collection = database.collection(pCollection);
         const cursor = collection.find(pQuery, pOptions);
-        const items = await cursor.toArray();
-        return items;
+        result = await cursor.toArray();
     } finally {
         await client.close();
     }
+    return result;
 }
 
 async function insertOne(pCollection, pDocument){
@@ -54,6 +56,7 @@ async function insertOne(pCollection, pDocument){
 }
 
 async function updateOne(pCollection, pFilter, pDocument){
+    let result;
     try{
         await client.connect();
         const database = client.db(database_name);
@@ -61,10 +64,11 @@ async function updateOne(pCollection, pFilter, pDocument){
         const set = {
             $set: pDocument,
         }
-        const result = await collection.updateOne(pFilter, set);
+        result = await collection.updateOne(pFilter, set);
     } finally {
         await client.close();
     }
+    return result;
 }
 
 async function deleteOne(pCollection, pFilter){
